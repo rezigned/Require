@@ -9,14 +9,17 @@
     
     // require module
     ctx['require'] = function() {
-        var fn = arguments[0];
+        var fn = arguments[0],
+        var m;
 
         switch(fn.constructor) {
             
-            case Function:                
+            case Function:
+                fn = new fn;
+                
             case Object:
                 
-                var m = fn == Function ? new fn : fn;
+                m = fn;
                 
                 m.construct && m.construct.call(m);
                 exports[m.namespace] = m;
@@ -29,8 +32,6 @@
                 var mods;
                 if (~fn.indexOf(NS_SEPARATOR))
                     mods = fn.split(NS_SEPARATOR);
-
-                var m;
                 
                 if (mods) {
                     var t = exports[mods.shift()],
