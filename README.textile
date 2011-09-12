@@ -1,0 +1,52 @@
+h1. JS Require (Alpha)
+
+Create a modular javascript module with ease.
+
+
+h2. License
+
+wtf
+
+h2. Company
+
+"Landau Reece.":http://www.landaureece.com
+
+h2. Usage
+
+<pre>
+
+// define a new module
+require(function(){
+    
+    var Ajax = {
+        // your code ...
+    };
+
+    var AwesomeAjax = (function(){
+        // your code
+    });
+
+    return {
+        // this is your module's namespace 
+        namespace: 'ajax',
+
+        // these will expose to the outside world
+        Ajax: Ajax,
+        Ajax2: AwesomeAjax
+    }
+});
+
+// usage
+var aj = require('ajax').Ajax;
+
+// or another way
+var aj = require('ajax.Ajax');
+
+aj.get('http://google.com');
+
+</pre>
+
+
+h2. New features to implement
+
+# load other resources 
